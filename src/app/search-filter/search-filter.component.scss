@@ -1,0 +1,18 @@
+header {
+  .search-box {
+    .navbar-form {
+      margin-top: 13px;
+    }
+  }
+
+  .inset-image {
+    display: inline-block;
+    padding: 0 5px;
+
+    img {
+      widht: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  }
+}

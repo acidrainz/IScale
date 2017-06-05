@@ -1,0 +1,68 @@
+<app-search-filter [result]=value (clicked)="onClicked($event)" (onChange)="onChange($event)"></app-search-filter>
+<div class="container">
+  <div class="col-md-4">
+    <h2>My Contacts</h2>
+    <br/>
+    <ul class="contacts">
+      <li *ngFor="let contact of contacts" [class.selected]="contact === selectedContact" (click)="onSelect(contact)">
+        <span class="badge"> {{contact.id}} </span> {{contact.name}}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="selectedContact" class="col-md-8">
+    <div class="clearfix row contact-details">
+      <div class="col-md-3">
+        <img [src]="selectedContact.img" class="img-responsive" />
+      </div>
+      <div class="col-md-9">
+        <button class="btn-md btn btn-info">SEND MESSAGE !</button>
+        <br/>
+        <br/>
+        <div class="lead">
+          <rating stateOn="glyphicon-heart" stateOff="glyphicon-heart-empty" [(ngModel)]="rate" [max]="max" [readonly]="isReadonly" [titles]="['one','two','three']">
+          </rating>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <div class=" description">
+      {{selectedContact.Description}}
+    </div>
+    <br/>
+    <br/>
+    <div class="like-dislikes">
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Likes</th>
+            </tr>
+          </thead>
+            <tr *ngFor="let like of selectedContact['Likes']" >
+              <td>
+                {{like}}
+              </td>
+            </tr>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Dislikes</th>
+            </tr>
+          </thead>
+            <tr *ngFor="let dislike of selectedContact['Dislikes']" >
+              <td>
+                {{dislike}}
+              </td>
+            </tr>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
